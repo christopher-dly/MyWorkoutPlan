@@ -13,6 +13,15 @@ security:
             lazy: true
             provider: users_in_memory
 
+            form_login:
+                login_path: connexion
+                check_path: connexion
+
+                username_parameter: email
+                password_parameter: password
+
+                default_target_path: /acceuil
+
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
 

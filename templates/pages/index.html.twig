@@ -1,5 +1,52 @@
 {% extends "pages/layout.html.twig" %}
 
 {% block main %}
+	<div ='main'>
+		<div class='leftBlock'>
+			<img class='imgConnexionPage' src="img/1.png" alt="image de d'un homme avec une barre et des poids">
+		</div>
+		<div class='rightBlock'>
+			<div class='describeText'>
+				<p>MyWorkoutPlan
+					<br>
+					Bienvenue sur MyWorkoutPlan, la plateforme dédiée à la gestion de vos plannings d’exercices de musculation. Avec MyWorkoutPlan, créez et personnalisez vos programmes d’entraînement selon vos objectifs, que vous soyez débutant ou confirmé.
+					<br>
 
-{% endblock %}
+					Accédez à une vaste bibliothèque de plannings partagés par la communauté et trouvez l’inspiration pour diversifier vos séances. Vous pouvez également partager vos propres plannings pour aider d’autres passionnés de musculation.
+					<br>
+
+					Grâce à MyWorkoutPlan, suivez facilement votre progression avec des statistiques détaillées sur vos performances. Visualisez vos gains de force, votre endurance et vos transformations physiques en un coup d’œil. Que vous souhaitiez rester motivé ou ajuster vos entraînements, MyWorkoutPlan vous accompagne dans chaque étape de votre parcours sportif.
+					<br>
+					Rejoignez notre communauté d'athlètes et faites passer vos entraînements au niveau supérieur avec MyWorkoutPlan !</p>
+			</div>
+            <hr>
+			<div clas='connexionForm'>
+				{{ form_start(connexionForm) }}
+
+				<div class='container'>
+					<p class='inputDescription'>Email :</p>
+					{{ form_widget(connexionForm.email, {'full_name':'email'}) }}
+					{{ form_errors(connexionForm.email) }}
+				</div>
+
+				<div class='container'>
+					<p class='inputDescription'>Mot de passe :</p>
+					{{ form_widget(connexionForm.password, {'full_name':'password'}) }}
+					{{ form_errors(connexionForm.password) }}
+				</div>
+
+				{{ form_widget(connexionForm.submit) }}
+				{{ form_end(connexionForm) }}
+
+				{% if error %}
+					<div class='errMsg'>Identifiants incorrects</div>
+				{% endif %}
+			</div>
+			<div class='logButton'>
+				<button>Se connecter</button>
+				<p>Ou</p>
+				<button>S'inscrire</button>
+			</div>
+		</div>
+	</div>
+</div>{% endblock %}

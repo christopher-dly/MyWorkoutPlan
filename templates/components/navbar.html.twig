@@ -1,19 +1,8 @@
 <nav>
-	{# <div class='logo'>
-		<a class='link' href={{ path('home') }}></a>
-	</div> #}
-    {# </div>
-
-    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-
-	    <a class='link' href={{ path('profil') }}>Profil</a>
-	    <a class='link' href={{ path('planning') }}>Planning</a>
-	    <a class='link' href={{ path('training') }}>Entrainement</a>
-	    <a class='link' href={{ path('community') }}>Post</a>
-	    <a class='link' href={{ path('logout') }}>Déconnexion</a>
-
-	{% else %}
-
-    {% endif %}
-    <div class='link'> #}
+	<div class='logo'>
+		<a class='link' href={{ path('connexion') }}>
+            <img src="/img/logo.png" alt="logo">
+        </a>
+	</div> 
+    <hr>
 </nav>
