@@ -7,7 +7,8 @@
 		</div>
 		<div class='rightBlock'>
 			<div class='describeText'>
-				<p>MyWorkoutPlan
+				<h1>MyWorkoutPlan</h1>
+				<p>
 					<br>
 					Bienvenue sur MyWorkoutPlan, la plateforme dédiée à la gestion de vos plannings d’exercices de musculation. Avec MyWorkoutPlan, créez et personnalisez vos programmes d’entraînement selon vos objectifs, que vous soyez débutant ou confirmé.
 					<br>
@@ -25,13 +26,13 @@
 
 				<div class='container'>
 					<p class='inputDescription'>Email :</p>
-					{{ form_widget(connexionForm.email, {'full_name':'email'}) }}
+					{{ form_widget(connexionForm.email, {'full_name':'email', 'value': last_Email, 'attr': {'class': 'input'}}) }}
 					{{ form_errors(connexionForm.email) }}
 				</div>
 
 				<div class='container'>
 					<p class='inputDescription'>Mot de passe :</p>
-					{{ form_widget(connexionForm.password, {'full_name':'password'}) }}
+					{{ form_widget(connexionForm.password, {'full_name':'password', 'attr': {'class': 'input'}}) }}
 					{{ form_errors(connexionForm.password) }}
 				</div>
 
@@ -41,6 +42,11 @@
 				{% if error %}
 					<div class='errMsg'>Identifiants incorrects</div>
 				{% endif %}
+
+				{% if error %}
+				<div class='errMsg'>Identifiants incorrects</div>
+				{% endif %}
+
 			</div>
 			<div class='logButton'>
 				<button>Se connecter</button>

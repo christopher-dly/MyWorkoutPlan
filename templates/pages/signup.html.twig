@@ -21,42 +21,46 @@
 
                 <div class='container'>
 					<p class='inputDescription'>Email :</p>
-					{{ form_widget(signupForm.email) }}
+					{{ form_widget(signupForm.email, {'attr': {'class': 'input'}}) }}
 					{{ form_errors(signupForm.email) }}
                 </div>
 
                 <div class='container'>
 					<p class='inputDescription'>Mot de passe :</p>
-					{{ form_widget(signupForm.password.first) }}
+					{{ form_widget(signupForm.password.first, {'label': '', 'attr': {'placeholder': 'Entrez votre mot de passe', 'class': 'input'}}) }}
 					{{ form_errors(signupForm.password.first) }}
                 </div>
 
 				<div class='container'>
 					<p class='inputDescription'>Confirmation du mot de passe :</p>
-					{{ form_widget(signupForm.password.second) }}
+					{{ form_widget(signupForm.password.second, {'label': '', 'attr': {'placeholder': 'Confirmez votre mot de passe', 'class': 'input'}}) }}
 					{{ form_errors(signupForm.password.second) }}
 				</div>
 
                 <div class='container'>
 					<p class='inputDescription'>Date de naissance :</p>
-					{{ form_widget(signupForm.date) }}
+					{{ form_widget(signupForm.date, {'attr': {'class': 'input'}}) }}
 					{{ form_errors(signupForm.date) }}
                 </div>
 
                 <div class='container'>
 					<p class='inputDescription'>Taille :</p>
-					{{ form_widget(signupForm.size) }}
+					{{ form_widget(signupForm.size, {'attr': {'class': 'input'}}) }}
 					{{ form_errors(signupForm.size) }}
                 </div>
 
                 <div class='container'>
 					<p class='inputDescription'>Poids :</p>
-					{{ form_widget(signupForm.weight) }}
+					{{ form_widget(signupForm.weight, {'attr': {'class': 'input'}}) }}
 					{{ form_errors(signupForm.weight) }}
                 </div>
 
 				{{ form_widget(signupForm.submit) }}
 				{{ form_end(signupForm) }}
+
+				{% if app.request.query.get('error')%}
+				<p class='errMsg'>cette email existe deja</p>
+				{% endif %}
         </div>
         <div class='rightBlock'>
             <img class='imgInscrriptionPage' src="img/3.png" alt="image d'un homme s'entreinant avec un sac de frappe">
