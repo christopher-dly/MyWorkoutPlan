@@ -30,19 +30,28 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     #[Assert\Email(message: "L'adresse email n'est pas valide.")]
+    #[Assert\NotBlank(message: "L'adresse email est obligatoire.")]
     private ?string $email = null;
 
     #[ORM\Column(type: 'string')]
+    #[Assert\NotBlank(message: "Le mot de passe est obligatoire.")]
+    #[Assert\Length(min: 8, minMessage: "Le mot de passe doit contenir au moins 8 caractères.")]
+    #[Assert\Regex(
+        pattern: "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/",
+        message: "Le mot de passe doit contenir au moins 8 caractères, une lettre minuscule, une lettre majuscule, un chiffre et un caractère spécial."
+    )]
     private ?string $password = null;
 
     #[ORM\Column(type: 'json')]
     private array $roles = [];
 
     #[ORM\Column(type: 'datetime')]
-    private \DateTime $date;
+    #[Assert\NotBlank(message: "La date de naissance est obligatoire.")]
+    #[Assert\Date(message: "La date de naissance doit être au format JJ/MM/AAAA")]
+    private \DateTimeInterface $date;
 
     #[ORM\Column(type: 'integer', nullable: true)]
-    private ?int $size = null;
+    private ?int $size = null;  
 
     #[ORM\Column(type: 'integer', nullable: true)]
     private ?int $weight = null;

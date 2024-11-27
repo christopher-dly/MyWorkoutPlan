@@ -15,7 +15,7 @@ use Symfony\Component\Form\FormBuilderInterface as FormFormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class UserForm extends AbstractType
+class SignupForm extends AbstractType
 {
     public function buildForm(FormFormBuilderInterface $builder, array $options)
     {

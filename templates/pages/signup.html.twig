@@ -1,0 +1,65 @@
+{% extends "pages/layout.html.twig" %}
+
+{% block main %}
+    <div class='main'>
+        <div class='leftBlock'>
+
+			<h2>Inscription :</h2>
+            	{{ form_start(signupForm) }}
+
+				<div class='container'>
+					<p class='inputDescription'>Nom :</p>
+					{{ form_widget(signupForm.name) }}
+					{{ form_errors(signupForm.name) }}
+                </div>
+
+                <div class='container'>
+					<p class='inputDescription'>Prénom :</p>
+					{{ form_widget(signupForm.firstName) }}
+					{{ form_errors(signupForm.firstName) }}
+                </div>
+
+                <div class='container'>
+					<p class='inputDescription'>Email :</p>
+					{{ form_widget(signupForm.email) }}
+					{{ form_errors(signupForm.email) }}
+                </div>
+
+                <div class='container'>
+					<p class='inputDescription'>Mot de passe :</p>
+					{{ form_widget(signupForm.password.first) }}
+					{{ form_errors(signupForm.password.first) }}
+                </div>
+
+				<div class='container'>
+					<p class='inputDescription'>Confirmation du mot de passe :</p>
+					{{ form_widget(signupForm.password.second) }}
+					{{ form_errors(signupForm.password.second) }}
+				</div>
+
+                <div class='container'>
+					<p class='inputDescription'>Date de naissance :</p>
+					{{ form_widget(signupForm.date) }}
+					{{ form_errors(signupForm.date) }}
+                </div>
+
+                <div class='container'>
+					<p class='inputDescription'>Taille :</p>
+					{{ form_widget(signupForm.size) }}
+					{{ form_errors(signupForm.size) }}
+                </div>
+
+                <div class='container'>
+					<p class='inputDescription'>Poids :</p>
+					{{ form_widget(signupForm.weight) }}
+					{{ form_errors(signupForm.weight) }}
+                </div>
+
+				{{ form_widget(signupForm.submit) }}
+				{{ form_end(signupForm) }}
+        </div>
+        <div class='rightBlock'>
+            <img class='imgInscrriptionPage' src="img/3.png" alt="image d'un homme s'entreinant avec un sac de frappe">
+        </div>
+    </div>
+{% endblock %}

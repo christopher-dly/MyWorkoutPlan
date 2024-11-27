@@ -12,4 +12,16 @@ class UserRepository extends ServiceEntityRepository
     {
         parent::__construct($doctrine, User::class);
     }
+    public function save(User $newUser, ?bool $flush = false)
+    {
+
+        $this->getEntityManager()->persist($newUser);
+
+        if ($flush) {
+
+            $this->getEntityManager()->flush();
+        }
+
+        return $newUser;
+    }
 }
