@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=League+Gothic&display=swap");
+@import url(./signup.css);
+@import url(./nav.css);
+@import url(./connexion.css);
+@import url(./footer.css);
 
 *{
   color: white;
@@ -9,6 +13,9 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  width: 100vw;
+  height: 100vh;
+  /* overflow-y: hidden; */
 }
 
 #visual {
@@ -18,4 +25,8 @@ body {
   width: 100vw;
   object-fit: cover;
   z-index: -1;
+}
+
+.footerNav{
+  bottom: 0;
 }

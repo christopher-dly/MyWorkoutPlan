@@ -20,6 +20,7 @@ class Exercice
     private ?string $name = null;
 
     #[ORM\Column(type: 'string', length: 500)]
+    #[Assert\NotBlank(message: "La description de l'exercice est obligatoire.")]
     #[Assert\Length(
         max: 500,
         maxMessage: "La description ne peut pas dépasser {{ limit }} caractères."

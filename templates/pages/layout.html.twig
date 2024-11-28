@@ -11,12 +11,16 @@
 	<body>
 		<img id="visual" src="/img/wave-haikei.png" alt="image de fond d'ecran">
 		<header class='navbar'>
-			{% include "components/navbar.html.twig" %}
+			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+				{% include "components/navbar_connected.html.twig" %}
+			{% else %}
+				{% include "components/navbar.html.twig" %}
+			{% endif %}
 		</header>
 
 		<main>
 			{% block main %}{% endblock %}
 		</main>
-
+		{% include "components/footer.html.twig" %}
 	</body>
 </html>

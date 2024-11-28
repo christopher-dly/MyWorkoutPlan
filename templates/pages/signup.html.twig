@@ -3,59 +3,58 @@
 {% block main %}
     <div class='main'>
         <div class='leftBlock'>
-
 			<h2>Inscription :</h2>
             	{{ form_start(signupForm) }}
 
-				<div class='container'>
-					<p class='inputDescription'>Nom :</p>
-					{{ form_widget(signupForm.name) }}
+				<div class='containerSignup'>
+					<p class='inputDescriptionSignup'>Nom :</p>
+					{{ form_widget(signupForm.name, {'attr': {'class': 'input'}}) }}
 					{{ form_errors(signupForm.name) }}
                 </div>
 
-                <div class='container'>
-					<p class='inputDescription'>Prénom :</p>
-					{{ form_widget(signupForm.firstName) }}
+                <div class='containerSignup'>
+					<p class='inputDescriptionSignup'>Prénom :</p>
+					{{ form_widget(signupForm.firstName, {'attr': {'class': 'input'}}) }}
 					{{ form_errors(signupForm.firstName) }}
                 </div>
 
-                <div class='container'>
-					<p class='inputDescription'>Email :</p>
+                <div class='containerSignup'>
+					<p class='inputDescriptionSignup'>Email :</p>
 					{{ form_widget(signupForm.email, {'attr': {'class': 'input'}}) }}
 					{{ form_errors(signupForm.email) }}
                 </div>
 
-                <div class='container'>
-					<p class='inputDescription'>Mot de passe :</p>
+                <div class='containerSignup'>
+					<p class='inputDescriptionSignup'>Mot de passe :</p>
 					{{ form_widget(signupForm.password.first, {'label': '', 'attr': {'placeholder': 'Entrez votre mot de passe', 'class': 'input'}}) }}
 					{{ form_errors(signupForm.password.first) }}
                 </div>
 
-				<div class='container'>
-					<p class='inputDescription'>Confirmation du mot de passe :</p>
+				<div class='containerSignup'>
+					<p class='inputDescriptionSignup'>Confirmation du mot de passe :</p>
 					{{ form_widget(signupForm.password.second, {'label': '', 'attr': {'placeholder': 'Confirmez votre mot de passe', 'class': 'input'}}) }}
 					{{ form_errors(signupForm.password.second) }}
 				</div>
 
-                <div class='container'>
-					<p class='inputDescription'>Date de naissance :</p>
+                <div class='containerSignup'>
+					<p class='inputDescriptionSignup'>Date de naissance :</p>
 					{{ form_widget(signupForm.date, {'attr': {'class': 'input'}}) }}
 					{{ form_errors(signupForm.date) }}
                 </div>
 
-                <div class='container'>
-					<p class='inputDescription'>Taille :</p>
+                <div class='containerSignup'>
+					<p class='inputDescriptionSignup'>Taille (facultatif):</p>
 					{{ form_widget(signupForm.size, {'attr': {'class': 'input'}}) }}
 					{{ form_errors(signupForm.size) }}
                 </div>
 
-                <div class='container'>
-					<p class='inputDescription'>Poids :</p>
+                <div class='containerSignup'>
+					<p class='inputDescriptionSignup'>Poids (facultatif) :</p>
 					{{ form_widget(signupForm.weight, {'attr': {'class': 'input'}}) }}
 					{{ form_errors(signupForm.weight) }}
                 </div>
 
-				{{ form_widget(signupForm.submit) }}
+				{{ form_widget(signupForm.submit, {'attr': {'class': 'buttonInscription'}}) }}
 				{{ form_end(signupForm) }}
 
 				{% if app.request.query.get('error')%}
@@ -63,7 +62,11 @@
 				{% endif %}
         </div>
         <div class='rightBlock'>
-            <img class='imgInscrriptionPage' src="img/3.png" alt="image d'un homme s'entreinant avec un sac de frappe">
+            <img class='imgInscriptionPage' src="img/3.png" alt="image d'un homme s'entreinant avec un sac de frappe" width='400' height='650'>
         </div>
     </div>
 {% endblock %}
+
+
+
+// faire un input spevial pour la date et la taille / poids

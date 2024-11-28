@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends AbstractController
 {
-    #[Route('/signup', name: 'signup')]
+    #[Route('/inscription', name: 'signup')]
     public function signup(Request $request, UserRepository $repository, UserPasswordHasherInterface $passwordHasher)
     {
         $user = new User();
@@ -24,7 +24,7 @@ class UserController extends AbstractController
         {
             $emailExist = $repository->findOneBy(['email' => $user->getEmail()]);
             if ($emailExist) {
-                return $this->redirectToRoute('inscription', ['error' => 'USER_EXIST']);
+                return $this->redirectToRoute('isgnup', ['error' => 'USER_EXIST']);
             }
             $hashedPassword = $passwordHasher->hashPassword(
                 $user,
@@ -32,10 +32,10 @@ class UserController extends AbstractController
             );
             $user->setPassword($hashedPassword);
 
-            $repository->sauvegarder($user, true);
+            $repository->save($user, true);
 
-            return $this->redirectToRoute('connexion', ['succes' => 'NEW_USER']);
+            return $this->redirectToRoute('', ['succes' => 'NEW_USER']);
         }
-        return $this->render('pages/inscription.html.twig', ['signupForm' => $form->createView()]);
+        return $this->render('pages/signup.html.twig', ['signupForm' => $form->createView()]);
     }
 }

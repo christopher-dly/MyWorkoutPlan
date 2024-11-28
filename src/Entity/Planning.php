@@ -22,7 +22,7 @@ class Planning
     #[Assert\Length(max: 50, maxMessage: "Le nom du planning ne peut pas dépasser 50 caractères.")]
     private ?string $name = null;
 
-    #[ORM\Column(type: 'string', length: 500)]
+    #[ORM\Column(type: 'string', length: 500, nullable: true)]
     #[Assert\Length(
         max: 500,
         maxMessage: "La description ne peut pas dépasser {{ limit }} caractères."

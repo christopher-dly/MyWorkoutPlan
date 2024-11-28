@@ -6,7 +6,7 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -20,62 +20,33 @@ class SignupForm extends AbstractType
     public function buildForm(FormFormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('prenom', TextType::class, [
-                'attr' => ['placeholder' => 'Entrez votre prenom'],
-                'constraints' => [
-                    new Assert\NotBlank(['message' => 'Le champs ne peut pas etres vide']),
-                    new Assert\Length([
-                        'min' => 3,
-                        'max' => 50,
-                        'minMessage' => 'le prénom doit contenir au moins 3 caractères',
-                        'maxMessage' => 'le prénom ne peut pas dépasser 50 caractère'
-                    ])
-                ],
+            ->add('firstName', TextType::class, [
+                'attr' => ['placeholder' => 'Entrez votre prenom']
             ])
-            ->add('nom', TextType::class, [
-                'attr' => ['placeholder' => 'Entrez votre nom'],
-                'constraints' => [
-                    new Assert\NotBlank(['message' => 'Le champs ne peut pas etres vide']),
-                    new Assert\Length([
-                        'min' => 3,
-                        'max' => 50,
-                        'minMessage' => 'le nom doit contenir au moins 3 caractères',
-                        'maxMessage' => 'le nom ne peut pas dépasser 50 caractère'
-                    ])
-                ],
+            ->add('name', TextType::class, [
+                'attr' => ['placeholder' => 'Entrez votre nom']
             ])
             ->add('email', EmailType::class, [
                 'attr' => ['placeholder' => 'Entrez votre e-mail'],
-                'constraints' => [
-                    new Assert\NotBlank(['message' => 'Le champs ne peut pas etres vide']),
-                ],
             ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'attr' => ['placeholder' => 'Entrez votre mot de passe'],
-                'constraints' => [
-                    new Assert\NotBlank(['message' => 'Le champs ne peut pas etres vide']),
-                    new Assert\Length(['min' => 6, 'minMessage' => 'le pseudo doit contenir au moins 6 caractères'])
-                ],
                 'first_options'  => array('label' => 'mot de passe'),
                 'second_options' => array('label' => 'confirmation de mot de passe'),
             ])
-            ->add('birthdate', DateType::class, [
-                'constraint' => [
-                    new Assert\NotBlank(['message' => 'Le champs ne peut pas etres vide'])
-                ],
+            ->add('date', DateType::class, [
+                'widget' => 'single_text',
+                'format' => 'dd/MM/yyyy',
+                'html5' => false,
             ])
-            ->add('size', IntegerType::class, [
-                'constraint' => [
-                    new Assert\NotBlank(['message' => 'Le champs ne peut pas etres vide'])
-                ],
+            ->add('size', NumberType::class, [
             ])
-            ->add('weight', IntegerType::class, [
-                'constraint' => [
-                    new Assert\NotBlank(['message' => 'Le champs ne peut pas etres vide'])
-                ],
+            ->add('weight', NumberType::class, [
             ])
-            ->add('submit', SubmitType::class);
+            ->add('submit', SubmitType::class, [
+                'label' => 'Inscription',
+            ]);
     }
     public function configureOptions(OptionsResolver $resolver)
     {

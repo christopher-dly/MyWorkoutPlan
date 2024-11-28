@@ -1,0 +1,23 @@
+.inputDescriptionSignup{
+    font-size: 30px;
+}
+
+.containerSignup{
+    display: flex;
+    margin-bottom: -25px;
+    align-items: center;
+}
+
+h2{
+    font-size: 50px;
+    margin-bottom: -20px;
+    margin-top: -20px;
+}
+
+.buttonInscription{
+    margin-top: 20px;
+}
+
+.imgInscriptionPage{
+    margin-top: 70px;
+}

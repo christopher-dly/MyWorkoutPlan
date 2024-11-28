@@ -21,11 +21,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string')]
     #[Assert\NotBlank(message: "Le prénom est obligatoire.")]
     #[Assert\Length(max: 50, maxMessage: "Le prénom ne peut pas dépasser 50 caractères.")]
+    #[Assert\Length(min: 2, maxMessage: "Le prénom ne peut pas faire moins de 2 caractères.")]
     private ?string $firstName = null;
-
+    
     #[ORM\Column(type: 'string')]
     #[Assert\NotBlank(message: "Le nom est obligatoire.")]
     #[Assert\Length(max: 50, maxMessage: "Le nom ne peut pas dépasser 50 caractères.")]
+    #[Assert\Length(min: 2, maxMessage: "Le nom ne peut pas faire moins de 2 caractères.")]
     private ?string $name = null;
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
@@ -35,7 +37,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'string')]
     #[Assert\NotBlank(message: "Le mot de passe est obligatoire.")]
-    #[Assert\Length(min: 8, minMessage: "Le mot de passe doit contenir au moins 8 caractères.")]
     #[Assert\Regex(
         pattern: "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/",
         message: "Le mot de passe doit contenir au moins 8 caractères, une lettre minuscule, une lettre majuscule, un chiffre et un caractère spécial."
@@ -51,9 +52,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private \DateTimeInterface $date;
 
     #[ORM\Column(type: 'integer', nullable: true)]
+    #[Assert\Positive(message: "La taille doit être un nombrepositif")]
     private ?int $size = null;  
 
     #[ORM\Column(type: 'integer', nullable: true)]
+    #[Assert\Positive(message: "Le poids doit être un nombre positif")]
     private ?int $weight = null;
 
     #[ORM\OneToMany(
@@ -211,7 +214,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      *
      * @return  self
      */
-    public function setDate($date)
+    public function setDate(\DateTimeInterface $date)
     {
         $this->date = $date;
 

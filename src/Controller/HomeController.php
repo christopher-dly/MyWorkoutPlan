@@ -10,7 +10,7 @@ use App\Form\ConnectForm;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'connexion')]
-    public function accueil(AuthenticationUtils $authenticationUtils)
+    public function connexion(AuthenticationUtils $authenticationUtils)
     {
         $form = $this->createForm(ConnectForm::class);
 
@@ -22,5 +22,11 @@ class HomeController extends AbstractController
             'error' => $error,
             'connexionForm' => $form->createView()
         ]);
+    }
+
+    #[Route('/accueil', name: 'home')]
+    public function accueil()
+    {
+        return $this->render('pages/home.html.twig');
     }
 }
